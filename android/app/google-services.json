@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "467858390553",
+    "project_id": "pickit-c4dfc",
+    "storage_bucket": "pickit-c4dfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467858390553:android:a3891b3051aba5cac6f488",
+        "android_client_info": {
+          "package_name": "com.beta.pickit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467858390553-4vnk2msdk6v8nuuoot3hi5abs5eqfp76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beta.pickit",
+            "certificate_hash": "3c3697a0815c9fbd9b84cf497f28ee0bd5af8397"
+          }
+        },
+        {
+          "client_id": "467858390553-fq9hu2qiltai1mginkpdj6j701c1o99e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beta.pickit",
+            "certificate_hash": "c2722b5bdd58b2452557d2f4ae92969f09fca9ba"
+          }
+        },
+        {
+          "client_id": "467858390553-ol27sleg2g43mrmv8ncdjhq3vlem424j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beta.pickit",
+            "certificate_hash": "ff5ceedb4f68cba9d556ff59a417b3d9901fb6a1"
+          }
+        },
+        {
+          "client_id": "467858390553-ehekkpbkd1ks4og7qnosud155n76m775.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2L1FJ46x6TFcrmB6osWWmQ0r6UlgCLBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467858390553-ehekkpbkd1ks4og7qnosud155n76m775.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "467858390553-46gfnlnopc25p4omi443eidtk3m3gi50.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beta.pickit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

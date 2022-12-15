@@ -1,0 +1,65 @@
+name: Flutter CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [stable]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: ${{ matrix.sdk }}
+
+      - uses: subosito/flutter-action@v1
+      - run: flutter pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+  # configure:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Configure Keystore
+  #     run: |
+  #       echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
+  #       echo "storeFile=upload-keystore.jks" >> key.properties
+  #       echo "keyAlias=$KEYSTORE_KEY_ALIAS" >> key.properties
+  #       echo "storePassword=$KEYSTORE_STORE_PASSWORD" >> key.properties
+  #       echo "keyPassword=$KEYSTORE_KEY_PASSWORD" >> key.properties
+
+  # build:
+  #   name: Build APK
+  #   if: github.repository == 'pickItDev/flutter'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-java@v1
+  #       with:
+  #         java-version: "12.x"
+#     - uses: subosito/flutter-action@v1
+#     - run: flutter pub get
+#     # - run: flutter test
+
+#     - run: flutter build apk --release
+
+#     - uses: actions/setup-node@v2
+#       with:
+#         node-version: 14
+#     - run: npm install -g "@semantic-release/changelog"
+#     - run: npm install -g "@semantic-release/git"
+#     - run: npm install -g "pub-semantic-release"
+
+#     - name: Semantic Release
+#       run: |
+#         export NODE_PATH="$(npm root -g)"
+#         npx semantic-release@17
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
