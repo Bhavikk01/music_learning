@@ -22,6 +22,7 @@ class Constants {
       'price': 1800,
     },
   };
+
   static final subjectsMap = {
     Subject.guitar: 'assets/images/guitar.png',
     Subject.piano: 'assets/images/piano.png',
