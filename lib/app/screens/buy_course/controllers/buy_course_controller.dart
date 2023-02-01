@@ -3,7 +3,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
+// import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../../constants/constants.dart';
 import '../../../data/controllers/course_controller.dart';
@@ -30,8 +30,8 @@ class BuyCourseController extends GetxController{
   bool courseSuccess = false;
 
   late var paymentRes;
-  late PaymentFailureResponse responseFailure;
-  late PaymentSuccessResponse responseSuccess;
+  // late PaymentFailureResponse responseFailure;
+  // late PaymentSuccessResponse responseSuccess;
 
   getAttributes(Tutor tutor, Subject subject, PricingPlan plan,bool loading){
     this.tutor = tutor;
@@ -96,89 +96,89 @@ class BuyCourseController extends GetxController{
   }
 
   courseCheckoutRazorpay(paymentRes) async {
-    try {
-      var _razorpay = Razorpay()
-        ..on(
-          Razorpay.EVENT_PAYMENT_SUCCESS,
-              (PaymentSuccessResponse response) {
-            log('SUCCESS: ${response.paymentId!}');
-            this.paymentRes = paymentRes;
-            responseSuccess = response;
-            coursePaymentSuccess();
-          },
-        )
-        ..on(
-          Razorpay.EVENT_PAYMENT_ERROR,
-              (PaymentFailureResponse response) {
-            log('failed: ${response.code}');
-            this.paymentRes = paymentRes;
-            responseFailure = response;
-            coursePaymentFailure();
-          },
-        );
-      // ..on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-
-      var options = {
-        'key': paymentRes.razorpayKey,
-        'amount': (paymentRes.amountInPaise!) +
-            (paymentRes.amountInPaise! / 9).round(),
-        'order_id': paymentRes.razorpayOrderId,
-        'prefill': {
-          'contact': DataBaseRepository.getUser().mobile,
-          'email': DataBaseRepository.getUser().emailId ?? 'test@razorpay.com',
-        },
-      };
-      _razorpay.open(options);
-      isTutorBooked = await checkTutorBooked();
-      loading = true;
-      log('Here i am to success the course of us');
-    } catch (e) {
-      courseFailed = true;
-      courseSuccess = false;
-      loading = false;
-      log(e.toString());
-    }
+    // try {
+    //   var _razorpay = Razorpay()
+    //     ..on(
+    //       Razorpay.EVENT_PAYMENT_SUCCESS,
+    //           (PaymentSuccessResponse response) {
+    //         log('SUCCESS: ${response.paymentId!}');
+    //         this.paymentRes = paymentRes;
+    //         responseSuccess = response;
+    //         coursePaymentSuccess();
+    //       },
+    //     )
+    //     ..on(
+    //       Razorpay.EVENT_PAYMENT_ERROR,
+    //           (PaymentFailureResponse response) {
+    //         log('failed: ${response.code}');
+    //         this.paymentRes = paymentRes;
+    //         responseFailure = response;
+    //         coursePaymentFailure();
+    //       },
+    //     );
+    //   // ..on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    //
+    //   var options = {
+    //     'key': paymentRes.razorpayKey,
+    //     'amount': (paymentRes.amountInPaise!) +
+    //         (paymentRes.amountInPaise! / 9).round(),
+    //     'order_id': paymentRes.razorpayOrderId,
+    //     'prefill': {
+    //       'contact': DataBaseRepository.getUser().mobile,
+    //       'email': DataBaseRepository.getUser().emailId ?? 'test@razorpay.com',
+    //     },
+    //   };
+    //   _razorpay.open(options);
+    //   isTutorBooked = await checkTutorBooked();
+    //   loading = true;
+    //   log('Here i am to success the course of us');
+    // } catch (e) {
+    //   courseFailed = true;
+    //   courseSuccess = false;
+    //   loading = false;
+    //   log(e.toString());
+    // }
   }
 
   coursePaymentSuccess()async {
-    try {
-      // var course =
-      isTutorBooked = await checkTutorBooked();
-      isTutorBooked
-          ? await buyCourseRepo.rechargeCourse(
-        tutor.id!,
-        (((paymentRes.amountInPaise!) +
-            (paymentRes.amountInPaise! / 9).round()) /
-            100)
-            .round(),
-        plan,
-      )
-        : await buyCourseRepo.createCourse(
-    tutor.id!,
-    subject,
-    plan,
-    (((paymentRes.amountInPaise!) +
-    (paymentRes.amountInPaise! / 9).round()) /
-    100)
-        .round(),
-    );
-      await buyCourseRepo.checkRazorpayPaymentSuccess(
-        paymentRes.id!,
-        responseSuccess.paymentId!,
-        responseSuccess.signature!);
-
-    loading = false;
-    courseFailed = false;
-    isTutorBooked = await checkTutorBooked();
-    courseSuccess = true;
-    update();
-    } catch (e) {
-      courseFailed = true;
-      courseSuccess = false;
-      loading = false;
-      update();
-      log(e.toString());
-    }
+    // try {
+    //   // var course =
+    //   isTutorBooked = await checkTutorBooked();
+    //   isTutorBooked
+    //       ? await buyCourseRepo.rechargeCourse(
+    //     tutor.id!,
+    //     (((paymentRes.amountInPaise!) +
+    //         (paymentRes.amountInPaise! / 9).round()) /
+    //         100)
+    //         .round(),
+    //     plan,
+    //   )
+    //     : await buyCourseRepo.createCourse(
+    // tutor.id!,
+    // subject,
+    // plan,
+    // (((paymentRes.amountInPaise!) +
+    // (paymentRes.amountInPaise! / 9).round()) /
+    // 100)
+    //     .round(),
+    // );
+    //   await buyCourseRepo.checkRazorpayPaymentSuccess(
+    //     paymentRes.id!,
+    //     responseSuccess.paymentId!,
+    //     responseSuccess.signature!);
+    //
+    // loading = false;
+    // courseFailed = false;
+    // isTutorBooked = await checkTutorBooked();
+    // courseSuccess = true;
+    // update();
+    // } catch (e) {
+    //   courseFailed = true;
+    //   courseSuccess = false;
+    //   loading = false;
+    //   update();
+    //   log(e.toString());
+    // }
   }
 
   coursePaymentFailure() async {

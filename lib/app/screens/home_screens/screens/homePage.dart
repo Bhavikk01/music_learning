@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   bool answer = false;
 
   List <Widget> _buildScreen() {
-    loadTutorCheck();
+    // loadTutorCheck();
     return [
       const HomeScreen(index: 0),
       answer
@@ -57,12 +57,12 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  Future<void> loadTutorCheck() async{
-    var preferences = await SharedPreferences.getInstance();
-    setState((){
-    answer = (preferences.getBool('isTutor'))!;
-    });
-  }
+  // Future<void> loadTutorCheck() async{
+  //   var preferences = await SharedPreferences.getInstance();
+  //   setState((){
+  //   answer = (preferences.getBool('isTutor'))!;
+  //   });
+  // }
 
   @override
   void initState(){

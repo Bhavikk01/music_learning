@@ -139,7 +139,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   //
                   // if(phoneAuthModel.phoneAuthModelState != PhoneAuthModelState.error){
                   //   if(phoneAuthModel.userState ==  PhoneAuthUserState.existingUser){
-                  await Get.toNamed(RoutePaths.homePage);
+                  if(otpCode == '230703'){
+                    await Get.toNamed(RoutePaths.homePage);
+                  }else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Invalid Verification code entered',
+                                ),
+                              )
+                          );
+                  }
                   //
                   //   }else if(phoneAuthModel.userState ==  PhoneAuthUserState.newUser){
                   //     await Get.toNamed(RoutePaths.coursePreferenceScreen);

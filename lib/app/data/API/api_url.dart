@@ -1,7 +1,7 @@
 class ApiUrl {
   ApiUrl._();
 
-  static const String baseUrl = 'http://10.10.41.113:5000/';
+  static const String baseUrl = 'http://10.10.40.217:5000/';
   static const String userPath = 'pickit/user';
   static const String createUser = 'api/createUser';
   static const String getUser = 'api/getUser';

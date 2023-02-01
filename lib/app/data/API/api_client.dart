@@ -17,9 +17,9 @@ class ApiClient extends GetConnect implements GetxService{
 
 
   late String token;
-  String appBaseUrl = 'http://10.10.41.113:5000/';
+  String appBaseUrl = 'http://10.10.40.217:5000/';
 
-  ApiClient({this.appBaseUrl = 'http://192.168.102.27:5000/'});
+  ApiClient({this.appBaseUrl = 'http://10.10.40.217:5000/'});
 
   Future<void> updateUser(User user) async {
     await put('${ApiUrl.baseUrl}user',user.toJson(),

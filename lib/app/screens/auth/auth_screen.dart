@@ -44,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               SizedBox(height: 45.h),
               Image.asset(
-                'assets/images/app_logo.png',
+                'assets/images/app_logo.jpg',
               ),
               SizedBox(
                 height: 110.h,
@@ -117,7 +117,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   onPressed: () async {
 
                     if (Phone.validate(phoneNumber)) {
-                      log('Hello');
                       controller.takePhoneNumber(phoneNumber, isTutor);
                       await controller.verifyTutorPhoneNumber();
                       if(await controller.authorizeUser(phoneNumber)){
